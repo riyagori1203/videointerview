@@ -28,7 +28,7 @@ export default function Home() {
                 </p>
 
                 <Row className="mt-4">
-                    <Col>
+                    <Col md lg sm className="mb-3">
                         <Card>
                             <Card.Img variant="top" src="holder.js/100px180" />
                             <Card.Body>
@@ -39,7 +39,7 @@ export default function Home() {
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col>
+                    <Col md lg sm>
                         <Card>
                             <Card.Img variant="top" src="holder.js/100px180" />
                             <Card.Body>

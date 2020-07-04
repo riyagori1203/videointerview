@@ -5,6 +5,7 @@ import Home from './Views/Home'
 import About from './Views/About'
 import Login from './Views/Login'
 import Register from './Views/Register'
+import Dashboard from './Views/Dashboard'
 
 import CustomNavbar from './Components/CustomNavbar'
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/about" exact component={About} />
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
+          <Route path="/dashboard" exact component={Dashboard} />
         </Switch>
       </Router>
     </div>
