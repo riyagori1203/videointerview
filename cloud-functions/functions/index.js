@@ -5,9 +5,17 @@ const app = require('express')()
 app.use(cors({ origin: true }))
 
 //File imports
-const { handleTest, signup } = require("./user");
+const { login, signup } = require("./user");
+const authMiddleware = require('./utils/authMiddleware')
 
-app.get('/', handleTest)
+app.get('/', (req, res) => {
+    res.send("Not a valid route for this API")
+})
 app.post('/signup', signup)
+app.post('/login', login)
+
+app.get('/testlogin', authMiddleware, (req, res) => {
+    return res.send(`You are logged in as: ${req.user.username}`)
+})
 
 exports.api = functions.region('asia-east2').https.onRequest(app)
