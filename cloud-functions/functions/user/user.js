@@ -23,3 +23,12 @@ exports.user = (req, res) => {
     })
     
 }
+
+exports.getUser = (req, res) => {
+    if(req.user.username != "" && req.user.username != null){
+        db.collection('users').doc(req.user.username).get()
+        .then((data) => {
+            return res.json(data.data())
+        })
+    }
+}
