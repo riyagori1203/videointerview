@@ -23,6 +23,7 @@ module.exports = (req, res, next) => {
     })
     .then((data) => {
       req.user.username = data.docs[0].data().username;
+      req.user.role = data.docs[0].data().role;
       console.log("Authorized")
       return next();
     })
