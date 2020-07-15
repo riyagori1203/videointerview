@@ -67,6 +67,8 @@ export default function CustomNavbar() {
           </Nav>
           <Nav>
             <Button variant="outline-secondary">Login As Employee </Button>{" "}
+          </Nav>
+          <Nav>
             <Button variant="outline-secondary">Login As Employer</Button>{" "}
           </Nav>
         </Navbar.Collapse>
