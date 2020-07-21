@@ -7,6 +7,7 @@ app.use(cors({ origin: true }))
 //File imports
 const { login, signup } = require("./user");
 const { user, getUser } = require('./user/user')
+const { interviews } = require('./user/interviews')
 
 const authMiddleware = require('./utils/authMiddleware')
 
@@ -17,6 +18,8 @@ app.post('/signup', signup)
 app.post('/login', login)
 app.post('/user', authMiddleware, user)
 app.get('/user', authMiddleware, getUser)
+
+app.get('/user/interviews', authMiddleware, interviews)
 
 app.get('/testlogin', authMiddleware, (req, res) => {
     return res.send(`You are logged in as: ${req.user.username}`)
