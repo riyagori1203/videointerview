@@ -68,6 +68,31 @@ exports.updateInterview = (req, res) => {
     });
 };
 
-// exports.deleteInterview = (req, res) => {
-    
-// }
+exports.deleteInterview = (req, res) => {
+  if (req.user.role != 1 || req.user.role == undefined)
+    return res.status(400).json({ error: "Unauthorized" });
+
+  //Check if user created this interview
+  db.collection("interviews")
+    .doc(req.body.id.toString())
+    .get()
+    .then((doc) => {
+      if (doc.data().interviewer != req.user.username) {
+        //Unauthorized
+        return res
+          .status(400)
+          .json({ error: "Unauthorized. You did not create this interview." });
+      }
+    });
+
+  db.collection("interviews")
+    .doc(req.body.id.toString())
+    .delete()
+    .then(() => {
+      return res.json({ message: "Interview deleted" });
+    })
+    .catch((err) => {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    });
+};
