@@ -24,8 +24,4 @@ app.post('/user/interview', authMiddleware, postInterview)
 app.patch('/user/interview', authMiddleware, updateInterview)
 app.delete('/user/interview', authMiddleware, deleteInterview)
 
-app.get('/testlogin', authMiddleware, (req, res) => {
-    return res.send(`You are logged in as: ${req.user.username}`)
-})
-
 exports.api = functions.region('asia-east2').https.onRequest(app)
